@@ -1,1 +1,0 @@
-# MyTemplates-for-CompetitiveProgramming
