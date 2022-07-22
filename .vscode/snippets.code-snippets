@@ -1,0 +1,357 @@
+{
+	"extension.string": {
+		"scope": "cpp",
+		"prefix": "def.ex.string",
+		"body": [
+			"namespace extensions {",
+			"\tusing namespace std;",
+			"\tstruct string : std::string {",
+			"\t\tusing std::string::string;",
+			"\t\tchar& operator[] (int64_t index) {",
+			"\t\t\tif(index >= 0) return basic_string::operator[](index);",
+			"\t\t\telse return basic_string::operator[](this->size() + index);",
+			"\t\t}",
+			"\t};",
+			"}"
+		]
+	},
+	"util.run_length_encoding": {
+		"scope": "cpp",
+		"prefix": "util.rle",
+		"body": [
+			"template<class I, class T = typename iterator_traits<I>::value_type, class L = int, class C = vector<pair<T,L>>> struct RLE : C {",
+			"\tRLE(I first, I last) {",
+			"\t\tthis->clear();",
+			"\t\tL cnt=0;;",
+			"\t\tfor(I itr=first, prev=itr; itr!=last; itr++) {",
+			"\t\t\tif(*prev != *itr) this->emplace_back(*prev, cnt), cnt = 1;",
+			"\t\t\telse cnt++;",
+			"\t\t\tprev = itr;",
+			"\t\t}",
+			"\t\tthis->emplace_back(*prev(last), cnt);",
+			"\t}",
+			"};",
+		]
+	},
+	"util.prefix_sum": {
+		"scope": "cpp",
+		"prefix": "util.prefix_sum",
+		"body": [
+			"template<class I, class T = typename iterator_traits<I>::value_type, class C = vector<T>> struct PrefixSum : C {",
+			"\tPrefixSum(I first, I last, T head = T()) {",
+			"\t\tthis->assign(distance(first,last)+1, head);",
+			"\t\tfor(auto i=size_t(1), itr=first; itr!=last; i++) {",
+			"\t\t\t(*this)[i] = (*this)[i-1] + *itr++;",
+			"\t\t}",
+			"\t}",
+			"\tinline T operator()(size_t left, size_t right) {",
+			"\t\treturn (*this)[right] - (*this)[left];",
+			"\t}",
+			"};",
+		]
+	},
+	"util.divisors": {
+		"scope": "cpp",
+		"prefix": "util.divisors",
+		"body": [
+			"template<class T> vector<T> divisors(T n) {",
+			"\tvector<T> res;",
+			"\tfor (T i=1; i*i<=n; i++) {",
+			"\t\tif (n%i == 0) {",
+			"\t\t\tres.emplace_back(i);",
+			"\t\t\tif(i*i < n) res.emplace_back(n/i);",
+			"\t\t}",
+			"\t}",
+			"\tsort(ALL(res));",
+			"\treturn res;",
+			"}"
+		],
+		"description": ""
+	},
+	"util.graph.topological_sort": {
+		"scope": "cpp",
+		"prefix": "util.topological_sort",
+		"body": [
+			"template <class T> vector<T> sort_topologically(Graph<T> &G, vector<int> &in_degs) {",
+			"\tvector<T> res;  queue<int> que;",
+			"\tfor(int i=0, n=size(in_degs); i<n; ++i) if(!in_degs[i]) que.emplace(i);",
+			"\twhile(!que.empty()) {",
+			"\t\tint v = que.front(); que.pop();",
+			"\t\tfor(T u : G[v]) if(!(--in_degs[u])) que.emplace(u);",
+			"\t\tres.emplace_back(v);",
+			"\t}",
+			"\treturn res;",
+			"}",
+		]
+	},
+	"util.Eratosthenes_sieve.list": {
+		"scope": "cpp",
+		"prefix": "util.prime_sieve.list",
+		"body": [
+			"template<class T = int, class C = vector<T>> struct Primes : C {",
+			"\tPrimes(size_t max) : is_prime(max+1, true) {",
+			"\t\tis_prime[0] = is_prime[1] = false;",
+			"\t\tfor(size_t p=2; p<=max; p++) if(is_prime[p]) {",
+			"\t\t\tfor(size_t i=p*p; i<=max; i+=p) is_prime[i] = false;",
+			"\t\t\tthis->emplace_back(p);",
+			"\t\t}",
+			"\t}",
+			"\tbool operator()(size_t index) {",
+			"\t\treturn is_prime[index];",
+			"\t}",
+			"  private:",
+			"\tvector<bool> is_prime;",
+			"};"
+		],
+		"description": ""
+	},
+	"util.Eratosthenes_sieve.is": {
+		"scope": "cpp",
+		"prefix": "util.prime_sieve.is",
+		"body": [
+			"template<class C = vector<bool>> struct IsPrime : C {",
+			"\tIsPrime(size_t max) : C(max+1, true) {",
+			"\t\t(*this)[0] = (*this)[1] = false;",
+			"\t\tfor(size_t p=2; p*p<=max; p++) if((*this)[p]) for(size_t i=p*p; i<=max; i+=p) (*this)[i] = false;",
+			"\t}",
+			"};"
+		],
+		"description": "Eratosthenes' sieve"
+	},
+	"shortcut.algorithm.BFS/DFS": {
+		"prefix": "short.algo.bfs/dfs",
+		"body": [
+			"${1|queue,stack|}<${3:int}> que;",
+			"vector<${4:int}> dists(n, -1);\n",
+			"que.emplace(${5:0}), dists[$5] = 0;\n",
+			"while(!que.empty()) {",
+			"\t$3 v = que.${2|front,top|}(); que.pop();",
+			"\tfor($3 nv : G[v]) {",
+			"\t\tif(dists[nv] >= 0) continue;",
+			"\t\tdists[nv] = dists[v] + 1;",
+			"\t\tque.emplace(nv);",
+			"\t}",
+			"}",
+		],
+		"description": ""
+	},
+	"structure.binary_indexed_tree": {
+		"scope": "cpp",
+		"prefix": "struct.bit",
+		"body": [
+			"template<class T> struct BIT {",
+			"\tBIT(size_t size) : n(++size), bits(n, 0) {}",
+			"\tBIT& add(size_t target, T x) {",
+			"\t\tfor(size_t i=target; i < this->n; i += -i&i) {",
+			"\t\t\tthis->bits[i] += x;",
+			"\t\t}",
+			"\t\treturn *this;",
+			"\t}",
+			"\tT sum(size_t last) {",
+			"\t\tT res(0);",
+			"\t\tfor (size_t i=last; i>0; i -= -i&i) {",
+			"\t\t\tres += this->bits[i];",
+			"\t\t}",
+			"\t\treturn res;",
+			"\t}",
+			"  private:",
+			"\tsize_t n;",
+			"\tvector<T> bits;",
+			"};"
+		],
+		"description": ""
+	},
+	"structure.Graph": {
+		"scope": "cpp",
+		"prefix": "struct.graph",
+		"body": [
+			"template <class T> using Graph = vector<vector<T>>;"
+		]
+	},
+	"structure.Graph.WeightedEdge": {
+		"scope": "cpp",
+		"prefix": "struct.graph.weightedEdge",
+		"body": [
+			"struct Edge {",
+			"\tsize_t to; int cost;",
+			"\tEdge(size_t t, int w) : to(t), cost(w) {}",
+			"};"
+		]
+	},
+	"structure.Matrix.noraml": {
+		"scope": "cpp",
+		"prefix": "struct.matrix.normal",
+		"body": [
+			"template <class T = int> struct Matrix : vector<vector<T>> {",
+			"\tMatrix(size_t h, size_t w, T init = T()) : vector<vector<T>> (h, vector<T> (w, init)) {}",
+			"\tinline T& operator()(size_t i, size_t j) { return (*this)[i][j]; }",
+			"};"
+		]
+	},
+	"structure.Matrix.extra.Transpose": {
+		"prefix": "struct.matrix.ex.transpose",
+		"body": [
+			"template<class T> Matrix<T>* Matrix<T>::transpose() {",
+			"\tMatrix<T> res(width, height);",
+			"\tfor(size_t i=0; i<height; ++i) for(size_t j=0; j<width; ++j) res[j][i] = (*this)(i,j);",
+			"\t*this = res;",
+			"\treturn this;",
+			"}"
+		],
+	},
+	"structure.Matrix.unfolded": {
+		"scope": "cpp",
+		"prefix": "struct.matrix.unfolded",
+		"body": [
+			"template <class T = int> struct UnfoldedMatrix : vector<T> {",
+			"\tUnfoldedMatrix(size_t h = 0, size_t w = 0, T init = T()) : vector<T> (h*w, init), height(h), width(w), buffer_size(h*w) {};",
+			"\tinline T& operator()(size_t i, size_t j) { return (*this)[i*width+j]; }",
+			"  private:",
+			"\tsize_t height, width, buffer_size;",
+			"};"
+		]
+	},
+	"shortcut.MeguruBinarySearch": {
+		"prefix": "meguru_bin_search",
+		"body": [
+			"${1:int} ng = ${2:-1}, ok = ${3:n};",
+			"while (abs(ok-ng) > 1) {",
+			"\t$1 mid = (ok+ng) / 2;",
+			"\t(${4:is_satisfied(mid)} ? ok : ng) = mid;",
+			"}",
+		],
+	},
+	"shortcut.ForEach": {
+		"scope": "cpp",
+		"prefix": "foreach",
+		"body": [
+			"for(const ${1:auto}& ${2:i}:${3:I})"
+		],
+		"description": "Iteration by element"
+	},
+	"shortcut.cout": {
+		"scope": "cpp",
+		"prefix": "cout",
+		"body": [
+			"cout << ${1:ans} << \"\\n\";"
+		],
+		"description": ""
+	},
+	"shortcut.output.YesNo": {
+		"scope": "cpp",
+		"prefix": "yesno",
+		"body": [
+			"(${1:true} ? ${2|\"Yes\" : \"No\",\"YES\" : \"NO\",\"yes\" : \"no\"|})"
+		],
+		"description": ""
+	},
+	"shortcut.output.fill": {
+		"scope": "cpp",
+		"prefix": "fill",
+		"body": [
+			" setfill('${1:0}') << setw(${2:16}) <<"
+		],
+		"description": ""
+	},
+	"shortcut.output.alignment_of_decimal_places": {
+		"scope": "cpp",
+		"prefix": "shortcut.fixed_prec",
+		"body": [
+			" fixed << setprecision(${16}) <<"
+		],
+		"description": ""
+	},
+	"shortcut.output.printf": {
+		"scope": "cpp",
+		"prefix": "printf;",
+		"body": [
+			"printf(\"${1:%lli}${2:\\n}\", $3);"
+		],
+		"description": ""
+	},
+	"shortcut.extensions::string": {
+		"scope": "cpp",
+		"prefix": "ex::string",
+		"body": [
+			"extensions::string"
+		]
+	},
+	"shortcut.in_range.open": {
+		"scope": "cpp",
+		"prefix": "open_range",
+		"body": [
+			"${1:a} < ${2:x} && $2 < ${3:b}"
+		]
+	},
+	"shortcut.in_range.closed": {
+		"scope": "cpp",
+		"prefix": "closed_range",
+		"body": [
+			"${1:a} <= ${2:x} && $2 <= ${3:b}"
+		]
+	},
+	"shortcut.declaration.PriorityQueue": {
+		"scope": "cpp",
+		"prefix": "dec.prique",
+		"body": [
+			"priority_queue<${1:int},${2|vector,deque|}<$1>,${3|less,greater|}<$1>>"
+		]
+	},
+	"shortcut.declaration.vector": {
+		"scope": "cpp",
+		"prefix": "dec.vec",
+		"body": [
+			"vector<${1:int}> ${2:a}(${3:n});"
+		]
+	},
+	"shortcut.input.vector": {
+		"scope": "cpp",
+		"prefix": "input.rep_vec",
+		"body": [
+			"REP(${1:i}, ${2:n}) cin >> ${3:a}[$1];"
+		]
+	},
+	"define.constant.MOD": {
+		"scope": "cpp",
+		"prefix": "def.const.MOD",
+		"body": [
+			"#define MOD 1000000007"
+		],
+		"description": "Definition of MOD number"
+	},
+	"map": {
+		"scope": "python",
+		"prefix": "mapped",
+		"body": [
+			"map(${1:int}, input().split())"
+		]
+	},
+	"input.split": {
+		"scope": "python",
+		"prefix": "splitted",
+		"body": [
+			"input().split()"
+		]
+	},
+	"input": {
+		"scope": "python",
+		"prefix": "input",
+		"body": [
+			"${1:int}(input())"
+		]
+	},
+	"YesNo": {
+		"scope": "python",
+		"prefix": "yesno",
+		"body": [
+			"\"${2:Yes}\" if ${1:True} else \"${3:No}\""
+		]
+	},
+	"enumerate": {
+		"scope": "python",
+		"prefix": "enumerate",
+		"body": [
+			"enumerate(${1:a})"
+		]
+	}
+}
