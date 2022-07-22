@@ -4,3 +4,9 @@
 [submodule "sources/libraries/ac-library"]
 	path = sources/libraries/ac-library
 	url = https://github.com/atcoder/ac-library
+[submodule "source/libraries/debug"]
+	path = source/libraries/debug
+	url = https://github.com/uni-kakurenbo/CppDebugger-for-CompetitionProgramming.git
+[submodule "sources/libraries/debug"]
+	path = sources/libraries/debug
+	url = https://github.com/uni-kakurenbo/CppDebugger-for-CompetitionProgramming.git
