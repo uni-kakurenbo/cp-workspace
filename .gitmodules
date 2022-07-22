@@ -7,3 +7,6 @@
 [submodule "sources/libraries/debug"]
 	path = sources/libraries/debug
 	url = https://github.com/uni-kakurenbo/CppDebugger-for-CompetitionProgramming.git
+[submodule "templates"]
+	path = templates
+	url = https://github.com/uni-kakurenbo/MyTemplates-for-CompetitiveProgramming
