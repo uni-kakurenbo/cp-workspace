@@ -1,9 +1,0 @@
-Town
-Road
-Town
-Town
-Town
-Town
-Road
-Road
-Road

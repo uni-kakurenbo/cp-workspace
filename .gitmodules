@@ -1,6 +1,3 @@
-[submodule "commands/core/AtCoder-Helper"]
-	path = commands/core/AtCoder-Helper
-	url = https://github.com/uni-kakurenbo/AtCoder-Helper.git
 [submodule "sources/libraries/ac-library"]
 	path = sources/libraries/ac-library
 	url = https://github.com/atcoder/ac-library

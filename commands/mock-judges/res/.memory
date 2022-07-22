@@ -1,8 +1,0 @@
-S   UID   PID  PPID  C PRI  NI   RSS    SZ WCHAN  TTY          TIME CMD
-S  1000  2176  2117  0  80   0  1804  2189 do_wai pts/7    00:00:00 test.sh
-S  1000  2177  2117  0  80   0  1804  2189 do_wai pts/7    00:00:00 test.sh
-S  1000  2179  2117  0  80   0  1804  2189 do_wai pts/7    00:00:00 test.sh
-S  1000  2181  2117  0  80   0  1804  2189 do_wai pts/7    00:00:00 test.sh
-S  1000  2183  2117  0  80   0  1872  2189 do_wai pts/7    00:00:00 test.sh
-S  1000  2185  2117  0  80   0  1808  2189 do_wai pts/7    00:00:00 test.sh
-R  1000  2187  2117  0  80   0  3032  2634 -      pts/7    00:00:00 ps
