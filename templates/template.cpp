@@ -1,3 +1,10 @@
+/*
+ * @uni_kakurenbo
+ * https://github.com/uni-kakurenbo/CompetitiveProgramming
+ *
+ * CC0 1.0  http://creativecommons.org/publicdomain/zero/1.0/deed.ja
+ */
+
 #include <bits/stdc++.h>
 using namespace std;
 
