@@ -7,3 +7,6 @@
 [submodule "templates"]
 	path = templates
 	url = https://github.com/uni-kakurenbo/MyTemplates-for-CompetitiveProgramming
+[submodule "commands"]
+	path = commands
+	url = https://github.com/uni-kakurenbo/MyCommandLineApplications-for-AtCoder.git
