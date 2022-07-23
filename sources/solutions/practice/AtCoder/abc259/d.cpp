@@ -46,8 +46,8 @@ struct Circle {
         debug(d, 1LL*this->r*this->r);
         return d == 1LL*this->r*this->r;
     }
-    string _debug() {
-        return "<Circle> (" + to_string(x) + ", " + to_string(y) + ") ƒÓ" + to_string(r);
+    vector<int> _debug() {
+        return { x, y, r };
     }
 };
 
