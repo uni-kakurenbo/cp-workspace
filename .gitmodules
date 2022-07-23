@@ -1,12 +1,12 @@
 [submodule "sources/libraries/ac-library"]
 	path = sources/libraries/ac-library
 	url = https://github.com/atcoder/ac-library
-[submodule "sources/libraries/debug"]
-	path = sources/libraries/debug
-	url = https://github.com/uni-kakurenbo/CppDebugger-for-CompetitionProgramming.git
 [submodule "templates"]
 	path = templates
 	url = https://github.com/uni-kakurenbo/MyTemplates-for-CompetitiveProgramming
 [submodule "commands"]
 	path = commands
 	url = https://github.com/uni-kakurenbo/MyCommandLineApplications-for-AtCoder.git
+[submodule "sources/libraries/debugger"]
+	path = sources/libraries/debugger
+	url = https://github.com/uni-kakurenbo/cpp-debugger-for-competition-programming.git
