@@ -4,10 +4,10 @@
     {
       "label": "build_cpp__development",
       "type": "shell",
-      "command": "${workspaceFolder}/../../../../commands/ccore.sh",
+      "command": "${workspaceFolder}/../../../commands/ccore.sh",
       "args": [
         "build_cpp",
-        "'${workspaceFolder}/../../../libraries'",
+        "'${workspaceFolder}/../../libraries'",
         "'${file}'",
         "'${fileDirname}/${fileBasenameNoExtension}.exe'",
         "-DLOCAL_JUDGE",
@@ -20,10 +20,10 @@
     {
       "label": "build_cpp__non_development",
       "type": "shell",
-      "command": "${workspaceFolder}/../../../../commands/ccore.sh",
+      "command": "${workspaceFolder}/../../../commands/ccore.sh",
       "args": [
         "build_cpp",
-        "'${workspaceFolder}/../../../libraries'",
+        "'${workspaceFolder}/../../libraries'",
         "'${file}'",
         "'${fileDirname}/${fileBasenameNoExtension}.exe'",
       ],
