@@ -221,6 +221,13 @@
 			"}",
 		],
 	},
+	"shortcut.reduce.vector": {
+		"scope": "cpp",
+		"prefix": "red.vec",
+		"body": [
+			"reduce(ALL(${1:vec}), ${2:0}, [](${3:int} &a, $3 &b) { return ${4:max(a, b)}; })"
+		]
+	},
 	"shortcut.ForEach": {
 		"scope": "cpp",
 		"prefix": "foreach",
