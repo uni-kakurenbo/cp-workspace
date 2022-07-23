@@ -1,4 +1,4 @@
-# Welcome to Uni's Coding Workspace!!
+# Welcome to Uni's Coding Space!!
 
 ## Accounts
 - AtCoder: [@uni_kakurenbo](https://atcoder.jp/users/uni_kakurenbo)
