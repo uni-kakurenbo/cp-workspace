@@ -10,3 +10,6 @@
 [submodule "sources/libraries/debugger"]
 	path = sources/libraries/debugger
 	url = https://github.com/uni-kakurenbo/cpp-debugger-for-competition-programming.git
+[submodule "sources/solutions"]
+	path = sources/solutions
+	url = https://github.com/uni-kakurenbo/my-submissions-for-competition-programming.git
