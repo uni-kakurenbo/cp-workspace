@@ -228,6 +228,14 @@
 			"reduce(ALL(${1:vec}), ${2:0}, [](${3:int} &a, $3 &b) { return ${4:max(a, b)}; })"
 		]
 	},
+	"shortcut.include.atcoder": {
+		"scope": "cpp",
+		"prefix": "ac-library",
+		"body": [
+			"#include <atcoder/${1:modint}>",
+			"using namespace atcoder;"
+		]
+	},
 	"shortcut.ForEach": {
 		"scope": "cpp",
 		"prefix": "foreach",
