@@ -6,7 +6,7 @@
 	url = https://github.com/uni-kakurenbo/MyTemplates-for-CompetitiveProgramming
 [submodule "commands"]
 	path = commands
-	url = https://github.com/uni-kakurenbo/MyCommandLineApplications-for-AtCoder.git
+	url = https://github.com/uni-kakurenbo/command-line-applications-for-atcoder.git
 [submodule "sources/libraries/debugger"]
 	path = sources/libraries/debugger
 	url = https://github.com/uni-kakurenbo/cpp-debugger-for-competition-programming.git
