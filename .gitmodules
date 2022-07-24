@@ -1,9 +1,6 @@
 [submodule "sources/libraries/ac-library"]
 	path = sources/libraries/ac-library
 	url = https://github.com/atcoder/ac-library
-[submodule "templates"]
-	path = templates
-	url = https://github.com/uni-kakurenbo/MyTemplates-for-CompetitiveProgramming
 [submodule "commands"]
 	path = commands
 	url = https://github.com/uni-kakurenbo/command-line-applications-for-atcoder.git
@@ -13,3 +10,6 @@
 [submodule "sources/solutions"]
 	path = sources/solutions
 	url = https://github.com/uni-kakurenbo/my-submissions-for-competition-programming.git
+[submodule "sources/templates"]
+	path = sources/templates
+	url = https://github.com/uni-kakurenbo/templates-for-competitive-programming
