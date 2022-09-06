@@ -74,7 +74,7 @@ signed main() {
 
     while(!now.empty()) { // 爆破するものがあれば
         for(int v : now) { // now をすべて見て，
-            for(int nv : G[v]) { // 誘爆されるものを
+            for(int nv : G[v]) { // 誘爆されるものが
                 if(exploded[nv]) continue; // まだ爆破されていなければ，
                 exploded[nv] = true; // 爆破したことにしておく．
                 nxt.emplace_back(nv); // 次の時刻で周りを誘爆させるようにする．
