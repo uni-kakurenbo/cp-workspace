@@ -143,6 +143,29 @@
 		],
 		"description": ""
 	},
+	"structure.apply": {
+		"prefix": [ "struct.apply", "struct.minmax" ],
+		"body": [
+			"namespace Internal {",
+			"\ttemplate<class T> T max(T a, T b) { return std::max(a, b); }",
+			"\ttemplate<class T> T min(T a, T b) { return std::min(a, b); }",
+			"}",
+			"",
+			"template<class T, T (*op)(T,T)> struct Apply {",
+			"\tApply(T v) : _v(v) {}",
+			"",
+			"\tApply& operator=(T&& val) & noexcept { _v = op(_v, val); return *this; }",
+			"\tT val() const { return _v; }",
+			"",
+			"  private:",
+			"\tT _v;",
+			"};",
+			"",
+			"template<class T> using Max = Apply<T,Internal::max<T>>;",
+			"template<class T> using Min = Apply<T,Internal::min<T>>;",
+		],
+		"description": ""
+	},
 	"structure.binary_indexed_tree": {
 		"scope": "cpp",
 		"prefix": "struct.bit",
