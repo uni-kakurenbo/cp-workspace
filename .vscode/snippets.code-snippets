@@ -118,6 +118,14 @@
 		],
 		"description": "Eratosthenes' sieve"
 	},
+	"shortcut.include.modint": {
+		"prefix": "short.inc.modint",
+		"body": [
+			"#include <atcoder/modint>",
+			"using mint = atcoder::modint${1|998244353,1000000007|};",
+			"ostream& operator<<(ostream& out, const mint val) { return out << val.val(); }",
+		],
+	},
 	"shortcut.algorithm.BFS/DFS": {
 		"prefix": "short.algo.bfs/dfs",
 		"body": [
