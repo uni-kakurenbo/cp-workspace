@@ -61,16 +61,18 @@ namespace Internal {
 
 template<class T, T (*op)(T,T)> struct Apply {
     Apply(T v) : _v(v) {}
-
-    Apply& operator=(T&& val) & noexcept { _v = op(_v, val); return *this; }
+    template<class U> Apply& operator=(U&& val) & noexcept {
+        _v = op(_v, forward<U>(val));
+        return *this;
+    }
     T val() const { return _v; }
 
   private:
     T _v;
 };
 
-template<class T> using Max = Apply<T,Internal::max>;
-template<class T> using Min = Apply<T,Internal::min>;
+template<class T> using Max = Apply<T,Internal::max<T>>;
+template<class T> using Min = Apply<T,Internal::min<T>>;
 
 signed main() {
     Max<int> maximum(10);

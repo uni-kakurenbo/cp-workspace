@@ -37,7 +37,8 @@
 		"scope": "cpp",
 		"prefix": "util.prefix_sum",
 		"body": [
-			"template<class I, class T = typename iterator_traits<I>::value_type, class C = vector<T>> struct PrefixSum : C {",
+			"template<class I, class T = typename iterator_traits<I>::value_type, class C = vector<T>>",
+			"struct PrefixSum : C {",
 			"\tPrefixSum(I first, I last, T head = T()) {",
 			"\t\tthis->assign(distance(first,last)+1, head);",
 			"\t\tfor(auto i=size_t(1), itr=first; itr!=last; i++) {",
@@ -118,33 +119,57 @@
 		],
 		"description": "Eratosthenes' sieve"
 	},
-	"shortcut.include.modint": {
-		"prefix": "short.inc.modint",
-		"body": [
-			"#include <atcoder/modint>",
-			"using mint = atcoder::modint${1|998244353,1000000007|};",
-			"ostream& operator<<(ostream& out, const mint val) { return out << val.val(); }",
-		],
-	},
 	"shortcut.algorithm.BFS/DFS": {
 		"prefix": "short.algo.bfs/dfs",
 		"body": [
 			"${1|queue,stack|}<${3:int}> que;",
 			"vector<${4:int}> dists(n, -1);\n",
-			"que.emplace(${5:0}), dists[$5] = 0;\n",
+			"que.push(${5:0}), dists[$5] = 0;\n",
 			"while(!que.empty()) {",
 			"\t$3 v = que.${2|front,top|}(); que.pop();",
 			"\tfor($3 nv : G[v]) {",
 			"\t\tif(dists[nv] >= 0) continue;",
 			"\t\tdists[nv] = dists[v] + 1;",
-			"\t\tque.emplace(nv);",
+			"\t\tque.push(nv);",
 			"\t}",
 			"}",
 		],
 		"description": ""
 	},
+	"algorithm.graph.dijkstra": {
+		"prefix": "algorithm.dijkstra",
+		"body": [
+			"void dijkstra(const Graph<Edge> &G, int s, vector<ll> *dists) {",
+			"\tusing State = pair<ll,int>;",
+			"\tpriority_queue<State,vector<State>,greater<State>> que;",
+			"",
+			"\tque.emplace(0, s), (*dists)[s] = 0;",
+			"",
+			"\twhile(!que.empty()) {",
+			"\t\tll d; int u; tie(d, u) = que.top(), que.pop();",
+			"",
+			"\t\tif((*dists)[u] < d) continue;",
+			"",
+			"\t\tfor(const Edge &e : G[u]) {",
+			"\t\t\tint v = e.to; ll cost = e.cost;",
+			"",
+			"\t\t\tif((*dists)[v] <= d + cost) continue;",
+			"",
+			"\t\t\t(*dists)[v] = d + cost;",
+			"\t\t\tque.emplace((*dists)[v], v);",
+			"\t\t}",
+			"\t}",
+			"",
+			"\treturn;",
+			"}",
+		],
+		"description": ""
+	},
 	"structure.apply": {
-		"prefix": [ "struct.apply", "struct.minmax" ],
+		"prefix": [
+			"struct.apply",
+			"struct.minmax"
+		],
 		"body": [
 			"namespace Internal {",
 			"\ttemplate<class T> T max(T a, T b) { return std::max(a, b); }",
@@ -153,8 +178,10 @@
 			"",
 			"template<class T, T (*op)(T,T)> struct Apply {",
 			"\tApply(T v) : _v(v) {}",
-			"",
-			"\tApply& operator=(T&& val) & noexcept { _v = op(_v, val); return *this; }",
+			"\ttemplate<class U> Apply& operator=(U&& val) & noexcept {",
+			"\t\t_v = op(_v, forward<U>(val));",
+			"\t\treturn *this;",
+			"\t}",
 			"\tT val() const { return _v; }",
 			"",
 			"  private:",
@@ -204,8 +231,8 @@
 		"prefix": "struct.graph.weightedEdge",
 		"body": [
 			"struct Edge {",
-			"\tsize_t to; int cost;",
-			"\tEdge(size_t t, int w) : to(t), cost(w) {}",
+			"\tint to; ll cost;",
+			"\tEdge(int t, ll w) : to(t), cost(w) {}",
 			"};"
 		]
 	},
@@ -266,6 +293,13 @@
 			"#include <atcoder/${1:modint}>",
 			"using namespace atcoder;"
 		]
+	},
+	"shortcut.include.modint": {
+		"prefix": "short.inc.modint",
+		"body": [
+			"#include <atcoder/modint>",
+			"using mint = atcoder::modint${1|998244353,1000000007|};"
+		],
 	},
 	"shortcut.ForEach": {
 		"scope": "cpp",

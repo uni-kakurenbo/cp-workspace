@@ -25,63 +25,65 @@ using namespace std;
 
 #define REP(i,n) for(int i=0, i##_length=int(n); i<i##_length; ++i)
 #define REPD(i,n) for(int i=(n)-1; i>=0; --i)
-#define FOR(i,a,b) for(ll i=(a), i##_last=ll(b); i<=i##_last; ++i)
-#define FORD(i,a,b) for(ll i=(a), i##_last=ll(b); i>=i##_last; --i)
+#define LOOP(n) REP(_$, (n))
+#define FOR(i,l,r) for(ll i=(l), i##_last=ll(r); i<=i##_last; ++i)
+#define FORD(i,l,r) for(ll i=(l), i##_last=ll(r); i>=i##_last; --i)
+
+#define ITRP(x,v) for(auto x : (v))
+#define ITRR(x,v) for(auto &x : (v))
+#define ITR(x,v) for(const auto &x : (v))
+#define ITRMP(x,y,v) for(auto [x, y] : (v))
+#define ITRMR(x,y,v) for(auto &[x, y] : (v))
+#define ITRM(x,y,v) for(const auto [x, y] : (v))
 
 #define ALL(x) begin((x)),end((x))
 #define RALL(x) rbegin((x)),rend((x))
 
-#define F$ first
-#define S$ second
+#define $F first
+#define $S second
 
 using ll = long long;
 using ull = unsigned long long;
 using ld = long double;
+
+constexpr char ln = '\n';
 
 template<class T1, class T2> inline auto mod(T1 x, T2 r) { return (x%r+r)%r; }
 
 template<class T> inline bool chmax(T &a, T b) { return (a<b ? a=b, true : false); }
 template<class T> inline bool chmin(T &a, T b) { return (a>b ? a=b, true : false); }
 /* #endregion */
-
-#include <atcoder/dsu>
-using namespace atcoder;
-
-using Bomb = pair<int,int>;
+struct Edge {
+    int to; ll cost;
+    Edge(int t, ll w) : to(t), cost(w) {}
+    vector<ll> _debug() { return { to, cost }; };
+};
 template <class T> using Graph = vector<vector<T>>;
 
-signed main() {
-    int n, r; cin >> n >> r;
-    vector<Bomb> bombs(n);
-    REP(i, n) cin >> bombs[i].F$ >> bombs[i].S$;
-    string s; cin >> s;
+void dijkstra(const Graph<Edge> &G, int s, vector<ll> *dists) {
+    using State = pair<ll,int>;
+    priority_queue<State,vector<State>,greater<State>> que;
 
-    Graph<int> G(n);
-
-    FOR(i, 0, n-2) FOR(j, i+1, n-1) {
-        auto [xi, yi] = bombs[i];
-        auto [xj, yj] = bombs[j];
-        int dx = abs(xi - xj), dy = abs(yi - yj);
-        if(1LL*dx*dx + 1LL*dy*dy <= 1LL*r*r) G[i].emplace_back(j), G[j].emplace_back(i);
-    }
-
-    queue<int> que;
-    vector<int> exploded(n);
-
-    REP(i, n) {
-        if(s[i] == 'Y') que.emplace(i), exploded[i] = true;
-    }
+    que.emplace(0, s), (*dists)[s] = 0;
 
     while(!que.empty()) {
-        int v = que.front(); que.pop();
-        for(int nv : G[v]) {
-            if(exploded[nv]) continue;
-            exploded[nv] = true;
-            que.emplace(nv);
+        ll d; int u; tie(d, u) = que.top(), que.pop();
+
+        if((*dists)[u] < d) continue;
+
+        for(Edge &e : G[u]) {
+            int v = e.to; ll cost = e.cost;
+
+            if((*dists)[v] <= d + cost) continue;
+
+            (*dists)[v] = d + cost;
+            que.emplace((*dists)[v], v);
         }
     }
 
-    cout << reduce(ALL(exploded)) << "\n";
+    return;
+}
 
+signed main() {
     return 0;
 }
