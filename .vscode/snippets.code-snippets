@@ -177,8 +177,8 @@
 			"}",
 			"",
 			"template<class T, T (*op)(T,T)> struct Apply {",
-			"\tApply(T v) : _v(v) {}",
-			"\ttemplate<class U> Apply& operator=(U&& val) & noexcept {",
+			"\tApply(T&& v) : _v(v) {}",
+			"\ttemplate<class U> Apply& operator<<=(U&& val) & noexcept {",
 			"\t\t_v = op(_v, forward<U>(val));",
 			"\t\treturn *this;",
 			"\t}",
@@ -247,6 +247,7 @@
 		]
 	},
 	"structure.Matrix.extra.Transpose": {
+		"scope": "cpp",
 		"prefix": "struct.matrix.ex.transpose",
 		"body": [
 			"template<class T> Matrix<T>* Matrix<T>::transpose() {",
