@@ -6,7 +6,7 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/../sources/libraries",
                 "/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries/ac-library",
-                "/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries/debugger"
+                "/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries/original/debugger"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

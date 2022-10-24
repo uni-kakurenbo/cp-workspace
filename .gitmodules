@@ -10,6 +10,6 @@
 [submodule "sources/templates"]
 	path = sources/templates
 	url = https://github.com/uni-kakurenbo/templates-for-competitive-programming
-[submodule "sources/libraries/sources/libraries/original/debugger"]
-	path = sources/libraries/sources/libraries/original/debugger
+[submodule "sources/libraries/original/debugger"]
+	path = sources/libraries/original/debugger
 	url = https://github.com/uni-kakurenbo/cpp-debugger-for-competition-programming.git
