@@ -4,12 +4,12 @@
 [submodule "commands"]
 	path = commands
 	url = https://github.com/uni-kakurenbo/command-line-applications-for-atcoder.git
-[submodule "sources/libraries/debugger"]
-	path = sources/libraries/debugger
-	url = https://github.com/uni-kakurenbo/cpp-debugger-for-competition-programming.git
 [submodule "sources/solutions"]
 	path = sources/solutions
 	url = https://github.com/uni-kakurenbo/my-submissions-for-competition-programming.git
 [submodule "sources/templates"]
 	path = sources/templates
 	url = https://github.com/uni-kakurenbo/templates-for-competitive-programming
+[submodule "sources/libraries/sources/libraries/original/debugger"]
+	path = sources/libraries/sources/libraries/original/debugger
+	url = https://github.com/uni-kakurenbo/cpp-debugger-for-competition-programming.git
