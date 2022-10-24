@@ -1,0 +1,30 @@
+{
+	"folders": [
+		{
+			"name": "Competitive Programming",
+			"uri": "vscode-remote://wsl+ubuntu/home/uni_kakurenbo/CompetitiveProgramming"
+		},
+		{
+			"name": "Commands",
+			"uri": "vscode-remote://wsl+ubuntu/home/uni_kakurenbo/CompetitiveProgramming/commands"
+		},
+		{
+			"name": "Libraries",
+			"uri": "vscode-remote://wsl+ubuntu/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries"
+		},
+		{
+			"name": "Sources",
+			"uri": "vscode-remote://wsl+ubuntu/home/uni_kakurenbo/CompetitiveProgramming/sources"
+		},
+		{
+			"name": "Solutions",
+			"uri": "vscode-remote://wsl+ubuntu/home/uni_kakurenbo/CompetitiveProgramming/sources/solutions"
+		},
+		{
+			"name": "Original",
+			"uri": "vscode-remote://wsl+ubuntu/home/uni_kakurenbo/CompetitiveProgramming/original"
+		}
+	],
+	"remoteAuthority": "wsl+ubuntu",
+	"settings": {}
+}
