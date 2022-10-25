@@ -33,8 +33,8 @@
 			"uri": "vscode-remote://wsl+ubuntu/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries/original/debugger"
 		},
 		{
-			"name": "Printer",
-			"uri": "vscode-remote://wsl+ubuntu/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries/original/printer"
+			"name": "Outputter",
+			"uri": "vscode-remote://wsl+ubuntu/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries/original/outputter"
 		},
 		{
 			"name": "Libraries",
@@ -155,7 +155,9 @@
 			"queue": "cpp",
 			"*.gch": "cpp",
 			"*.cppa": "cpp",
-			"stack": "cpp"
+			"stack": "cpp",
+			"print": "cpp",
+			"output": "cpp"
 		},
 		"todohighlight.isCaseSensitive": false,
 		"todohighlight.keywords": [
