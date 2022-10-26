@@ -30,8 +30,7 @@
 		},
 		{
 			"name": "Debugger",
-			"uri": "vscode-remote://wsl+ubuntu/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries/original/debugger",
-                "/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries/original/outputter"
+			"uri": "vscode-remote://wsl+ubuntu/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries/original/debugger"
 		},
 		{
 			"name": "Outputter",
@@ -48,6 +47,10 @@
 		{
 			"name": "Original",
 			"uri": "vscode-remote://wsl+ubuntu/home/uni_kakurenbo/CompetitiveProgramming/original"
+		},
+		{
+			"name": "Commands",
+			"uri": "vscode-remote://wsl+ubuntu/home/uni_kakurenbo/CompetitiveProgramming/commands"
 		},
 		{
 			"name": "Competitive Programming",
@@ -158,7 +161,8 @@
 			"*.cppa": "cpp",
 			"stack": "cpp",
 			"print": "cpp",
-			"output": "cpp"
+			"output": "cpp",
+			"template": "cpp"
 		},
 		"todohighlight.isCaseSensitive": false,
 		"todohighlight.keywords": [
