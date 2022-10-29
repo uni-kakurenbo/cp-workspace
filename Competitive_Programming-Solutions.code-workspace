@@ -162,7 +162,8 @@
 			"stack": "cpp",
 			"print": "cpp",
 			"output": "cpp",
-			"template": "cpp"
+			"template": "cpp",
+			"segtree": "cpp"
 		},
 		"todohighlight.isCaseSensitive": false,
 		"todohighlight.keywords": [
