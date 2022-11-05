@@ -76,6 +76,22 @@
 			"}",
 		],
 	},
+    "shortcut.interval_scanner": {
+        "prefix": [ "interval_scanner", "shakutori_method" ],
+        "body": [
+            "auto validate = [&](auto) { return true; };",
+            "auto init = [&]() { };",
+            "auto valid = [&]() { return; };",
+            "auto expand = [&](auto val) { };",
+            "auto contract = [&](auto val) { };",
+            "auto apply = [&](auto l, auto r) { chmax(ans, r - l); };",
+            "",
+            "InclusiveIntervalScanner<> scanner(validate, init, valid, expand, contract, apply);",
+            "scanner.scan_all(ALL());",
+            "",
+        ],
+        "description": ""
+    },
 	"shortcut.reduce.vector": {
 		"scope": "cpp",
 		"prefix": "red.vec",
