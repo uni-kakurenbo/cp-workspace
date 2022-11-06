@@ -164,7 +164,9 @@
             "output": "cpp",
             "template": "cpp",
             "segtree": "cpp",
-            "maxflow": "cpp"
+            "maxflow": "cpp",
+            "fenwicktree": "cpp",
+            "*.expanded": "cpp"
         },
 		"todohighlight.isCaseSensitive": false,
 		"todohighlight.keywords": [
