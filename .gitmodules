@@ -13,3 +13,6 @@
 [submodule "sources/libraries/original"]
 	path = sources/libraries/original
 	url = https://github.com/uni-kakurenbo/libraries-for-competition-programming.git
+[submodule "original/contests/TGC"]
+	path = original/contests/TGC
+	url = https://github.com/uni-kakurenbo/TGC.git
