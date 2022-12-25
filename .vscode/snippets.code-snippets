@@ -16,14 +16,15 @@
 		]
 	},
 	"shortcut.algorithm.BFS/DFS": {
+		"scope": "cpp",
 		"prefix": "short.algo.bfs/dfs",
 		"body": [
 			"${1|queue,stack|}<${3:int}> que;",
 			"vector<${4:int}> dists(n, -1);\n",
 			"que.push(${5:0}), dists[$5] = 0;\n",
 			"while(!que.empty()) {",
-			"\t$3 v = que.${2|front,top|}(); que.pop();",
-			"\tfor($3 nv : G[v]) {",
+			"\tauto v = que.${2|front,top|}(); que.pop();",
+			"\tfor(auto& nv : G[v]) {",
 			"\t\tif(dists[nv] >= 0) continue;",
 			"\t\tdists[nv] = dists[v] + 1;",
 			"\t\tque.push(nv);",
@@ -96,15 +97,14 @@
 		"scope": "cpp",
 		"prefix": "red.vec",
 		"body": [
-			"reduce(ALL(${1:vec}), ${2:0}, [](${3:int} &a, $3 &b) { return ${4:max(a, b)}; })"
+			"reduce(ALL(${1:vec}), ${2:0}, [](auto& a, auto& b) { return a + b}; })"
 		]
 	},
 	"shortcut.include.atcoder": {
 		"scope": "cpp",
 		"prefix": "ac-library",
 		"body": [
-			"#include <atcoder/${1:modint}>",
-			"using namespace atcoder;"
+			"#include <atcoder/${1:modint}>"
 		]
 	},
 	"shortcut.include.modint": {
@@ -114,6 +114,18 @@
 			"using mint = atcoder::modint${1|998244353,1000000007|};"
 		],
 	},
+    "shortcut.include.segtree" : {
+		"scope": "cpp",
+		"prefix": "short.inc.segtree",
+		"body": [
+            "#include <atcoder/segtree>",
+            "",
+            "${1:int} ${4:op}(const $1 a, const $1 b) { return ${3|a + b,a ^ b,a * b,gcd(a\\, b),min(a\\, b),max(a\\, b)|}; }",
+			"$1 ${5:e}() { return ${2|0,1,INT32_MIN,INT32_MAX,INT64_MIN,INT64_MAX,UINT32_MIN,UINT32_MAX,UINT64_MIN,UINT64_MAX|}; }",
+            "",
+            "segtree<$1,$4,$5> ${6:sgt};",
+		]
+    },
 	"shortcut.ForEach": {
 		"scope": "cpp",
 		"prefix": "foreach",
