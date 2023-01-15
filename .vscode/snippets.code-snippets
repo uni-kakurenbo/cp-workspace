@@ -224,6 +224,22 @@
 		],
 		"description": "Definition of MOD number"
 	},
+	"divisors": {
+		"scope": "python",
+		"prefix": "divisors",
+		"body": [
+			"def divisors(n):",
+            "\td0, d1 = [], []",
+            "\ti = 1",
+            "\twhile i*i <= n:",
+            "\t\tif n % i == 0:",
+            "\t\t\td0.append(i)",
+            "\t\t\tif i != n // i:",
+            "\t\t\t\td1.append(n//i)",
+            "\t\ti += 1",
+            "\treturn d0 + d1[::-1]"
+		]
+	},
 	"map": {
 		"scope": "python",
 		"prefix": "mapped",
