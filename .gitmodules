@@ -16,3 +16,6 @@
 [submodule "original/contests/TGC"]
 	path = original/contests/TGC
 	url = https://github.com/uni-kakurenbo/TGC.git
+[submodule "sources/others/themed_research"]
+	path = sources/others/themed_research
+	url = https://github.com/uni-kakurenbo/themed-research.git
