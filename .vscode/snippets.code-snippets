@@ -67,6 +67,17 @@
 			"};"
 		]
 	},
+	"shortcut.MultiTestcases": {
+		"prefix": "multi_testcases",
+		"body": [
+			"def solver():",
+			"\t return",
+			"",
+			"T = int(input)",
+			"for _ in [0] * T:",
+			"\tprint(solve())"
+		],
+	},
 	"shortcut.MeguruBinarySearch": {
 		"prefix": "meguru_bin_search",
 		"body": [
@@ -77,22 +88,25 @@
 			"}",
 		],
 	},
-    "shortcut.interval_scanner": {
-        "prefix": [ "interval_scanner", "shakutori_method" ],
-        "body": [
-            "auto validate = [&](auto) { return true; };",
-            "auto init = [&]() { };",
-            "auto valid = [&]() { return; };",
-            "auto expand = [&](auto val) { };",
-            "auto contract = [&](auto val) { };",
-            "auto apply = [&](auto l, auto r) { chmax(ans, r - l); };",
-            "",
-            "InclusiveIntervalScanner<> scanner(validate, init, valid, expand, contract, apply);",
-            "scanner.scan_all(ALL());",
-            "",
-        ],
-        "description": ""
-    },
+	"shortcut.interval_scanner": {
+		"prefix": [
+			"interval_scanner",
+			"shakutori_method"
+		],
+		"body": [
+			"auto validate = [&](auto) { return true; };",
+			"auto init = [&]() { };",
+			"auto valid = [&]() { return; };",
+			"auto expand = [&](auto val) { };",
+			"auto contract = [&](auto val) { };",
+			"auto apply = [&](auto l, auto r) { chmax(ans, r - l); };",
+			"",
+			"InclusiveIntervalScanner<> scanner(validate, init, valid, expand, contract, apply);",
+			"scanner.scan_all(ALL());",
+			"",
+		],
+		"description": ""
+	},
 	"shortcut.reduce.vector": {
 		"scope": "cpp",
 		"prefix": "red.vec",
@@ -114,18 +128,18 @@
 			"using mint = atcoder::modint${1|998244353,1000000007|};"
 		],
 	},
-    "shortcut.include.segtree" : {
+	"shortcut.include.segtree": {
 		"scope": "cpp",
 		"prefix": "short.inc.segtree",
 		"body": [
-            "#include <atcoder/segtree>",
-            "",
-            "${1:int} ${4:op}(const $1 a, const $1 b) { return ${3|a + b,a ^ b,a * b,gcd(a\\, b),min(a\\, b),max(a\\, b)|}; }",
+			"#include <atcoder/segtree>",
+			"",
+			"${1:int} ${4:op}(const $1 a, const $1 b) { return ${3|a + b,a ^ b,a * b,gcd(a\\, b),min(a\\, b),max(a\\, b)|}; }",
 			"$1 ${5:e}() { return ${2|0,1,INT32_MIN,INT32_MAX,INT64_MIN,INT64_MAX,UINT32_MIN,UINT32_MAX,UINT64_MIN,UINT64_MAX|}; }",
-            "",
-            "segtree<$1,$4,$5> ${6:sgt};",
+			"",
+			"segtree<$1,$4,$5> ${6:sgt};",
 		]
-    },
+	},
 	"shortcut.ForEach": {
 		"scope": "cpp",
 		"prefix": "foreach",
@@ -146,7 +160,7 @@
 		"scope": "cpp",
 		"prefix": "yesno",
 		"body": [
-			"(${1:true} ? ${2|\"Yes\" : \"No\",\"YES\" : \"NO\",\"yes\" : \"no\"|})"
+			"${1:true} ? ${2|\"Yes\" : \"No\",\"YES\" : \"NO\",\"yes\" : \"no\"|}"
 		],
 		"description": ""
 	},
@@ -229,15 +243,15 @@
 		"prefix": "divisors",
 		"body": [
 			"def divisors(n):",
-            "\td0, d1 = [], []",
-            "\ti = 1",
-            "\twhile i*i <= n:",
-            "\t\tif n % i == 0:",
-            "\t\t\td0.append(i)",
-            "\t\t\tif i != n // i:",
-            "\t\t\t\td1.append(n//i)",
-            "\t\ti += 1",
-            "\treturn d0 + d1[::-1]"
+			"\td0, d1 = [], []",
+			"\ti = 1",
+			"\twhile i*i <= n:",
+			"\t\tif n % i == 0:",
+			"\t\t\td0.append(i)",
+			"\t\t\tif i != n // i:",
+			"\t\t\t\td1.append(n//i)",
+			"\t\ti += 1",
+			"\treturn d0 + d1[::-1]"
 		]
 	},
 	"map": {
