@@ -8,6 +8,10 @@ if [ "$TERM" != "linux" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
+function chrome(){
+    "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" "$(wslpath -w "$(realpath "$1")")"
+}
+
 export USE_CCACHE=1
 export CCACHE_DIR=/root/.ccache
 
