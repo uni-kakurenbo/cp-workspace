@@ -220,7 +220,14 @@
 		"scope": "cpp",
 		"prefix": "dec.vec",
 		"body": [
-			"vector<${1:int}> ${2:a}(${3:n});"
+			"vector<${1:i64}> ${2:a}(${3:n});"
+		]
+	},
+	"shortcut.declaration.valarray": {
+		"scope": "cpp",
+		"prefix": "dec.va",
+		"body": [
+			"valarray<${1:i64}> ${2:a}(${3:n});"
 		]
 	},
 	"shortcut.input.vector": {
