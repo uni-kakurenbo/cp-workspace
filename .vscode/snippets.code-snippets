@@ -33,6 +33,18 @@
 		],
 		"description": ""
 	},
+	"shortcut.algorithm.tsp": {
+		"scope": "cpp",
+		"prefix": [ "short.algo.tsp", "short.algo.bit-dp" ],
+		"body": [
+            "REP(x, 1 << r) {",
+            "\tREP(i, r) REP(j, r) {",
+            "\t\tchmin(dp[x | (1 << i)][i], dp[x][j] + dists[j][i]);",
+            "\t}",
+            "}"
+		],
+		"description": ""
+	},
 	"structure.Matrix.noraml": {
 		"scope": "cpp",
 		"prefix": "struct.matrix.normal",
