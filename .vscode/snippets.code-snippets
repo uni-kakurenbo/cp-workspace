@@ -1,20 +1,21 @@
 {
-	"extension.string": {
+	"shortcut.declaration.virtual-graph": {
 		"scope": "cpp",
-		"prefix": "def.ex.string",
+		"prefix": "short.dec.virtual-graph",
 		"body": [
-			"namespace extensions {",
-			"\tusing namespace std;",
-			"\tstruct string : std::string {",
-			"\t\tusing std::string::string;",
-			"\t\tchar& operator[] (int64_t index) {",
-			"\t\t\tif(index >= 0) return basic_string::operator[](index);",
-			"\t\t\telse return basic_string::operator[](this->size() + index);",
-			"\t\t}",
-			"\t};",
-			"}"
-		]
+            "lib::grid<char,string> ${5:G}(${1:h}, ${2:w}); input >> $5;",
+            "using edge = lib::virtual_graph<${3:int},${4:int}>::edge;",
+            "auto next = [&](const $3& v) -> vector<edge> {",
+            "\tvector<edge> res;",
+            "\tITR(nv, $5.vicinities4(v/w, v%w)) if($5(nv) != '#') res.emplace_back(v, $5.id(nv));",
+            "\treturn res;",
+            "};",
+            "",
+            "lib::virtual_graph<$3,$4> ${6:H}(next, $1 * $2);",
+		],
+		"description": ""
 	},
+
 	"shortcut.algorithm.BFS/DFS": {
 		"scope": "cpp",
 		"prefix": "short.algo.bfs/dfs",
@@ -33,15 +34,43 @@
 		],
 		"description": ""
 	},
+	"shortcut.structure.monoid": {
+		"scope": "cpp",
+		"prefix": "short.struct.monoid",
+		"body": [
+			"template<class T>",
+			"struct monoid : lib::algebraic::base<T> /*, internal::group, internal::commutative*/ {",
+			"\tusing base = lib::algebraic::base<T>;",
+			"\tusing base::base;",
+			"\t// monoid() : base() {}",
+			"\t// monoid(const T& v) : base(v) {}",
+			"\tfriend inline monoid operator+(const monoid& lhs, const monoid& rhs) noexcept(NO_EXCEPT) { return lhs.val() + rhs.val(); }",
+			"\t// inline bitxor operator-() const noexcept(NO_EXCEPT) { return -this->val(); }",
+			"};"
+		]
+	},
+	"shortcut.algorithm.Floyd-Warshall": {
+		"scope": "cpp",
+		"prefix": "short.algo.floyd-warshall",
+		"body": [
+			"REP(k, ${1:n}) REP(i, $1) REP(j, $1) {",
+			"\tchmin(${2:G}[i][j], $2[i][k] + $2[k][j]);",
+			"}"
+		]
+	},
 	"shortcut.algorithm.tsp": {
 		"scope": "cpp",
-		"prefix": [ "short.algo.tsp", "short.algo.bit-dp" ],
+		"prefix": [
+			"short.algo.tsp",
+			"short.algo.bit-dp"
+		],
 		"body": [
-            "REP(x, 1 << r) {",
-            "\tREP(i, r) REP(j, r) {",
-            "\t\tchmin(dp[x | (1 << i)][i], dp[x][j] + dists[j][i]);",
-            "\t}",
-            "}"
+			"lib::valgrid<int> dp(1 << ${1:n}, $1, INF32);",
+			"REP(x, 1 << $1) {",
+			"\tREP(i, $1) REP(j, $1) {",
+			"\t\tchmin(dp[x | (1 << i)][i], dp[x][j] + ${2:dists}[j][i]);",
+			"\t}",
+			"}"
 		],
 		"description": ""
 	},
