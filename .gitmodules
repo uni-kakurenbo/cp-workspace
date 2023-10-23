@@ -19,3 +19,9 @@
 [submodule "sources/others/themed_research"]
 	path = sources/others/themed_research
 	url = https://github.com/uni-kakurenbo/themed-research.git
+[submodule "others/kusira/GBC"]
+	path = others/kusira/GBC
+	url = https://github.com/kusira/GBC.git
+[submodule "original/private-tasks"]
+	path = original/private-tasks
+	url = https://github.com/uni-kakurenbo/original-problems.git
