@@ -1,8 +1,8 @@
 {
-	"shortcut.declaration.virtual-graph": {
-		"scope": "cpp",
-		"prefix": "short.dec.virtual-graph",
-		"body": [
+    "shortcut.declaration.virtual-graph": {
+        "scope": "cpp",
+        "prefix": "short.dec.virtual-graph",
+        "body": [
             "lib::grid<char,string> ${5:G}(${1:h}, ${2:w}); input >> $5;",
             "using edge = lib::virtual_graph<${3:int},${4:int}>::edge;",
             "auto next = [&](const $3& v) -> vector<edge> {",
@@ -12,329 +12,364 @@
             "};",
             "",
             "lib::virtual_graph<$3,$4> ${6:H}(next, $1 * $2);",
-		],
-		"description": ""
-	},
+        ],
+        "description": ""
+    },
 
-	"shortcut.algorithm.BFS/DFS": {
-		"scope": "cpp",
-		"prefix": "short.algo.bfs/dfs",
-		"body": [
-			"${1|queue,stack|}<${3:int}> que;",
-			"vector<${4:int}> dists(n, -1);\n",
-			"que.push(${5:0}), dists[$5] = 0;\n",
-			"while(!que.empty()) {",
-			"\tauto v = que.${2|front,top|}(); que.pop();",
-			"\tfor(auto& nv : G[v]) {",
-			"\t\tif(dists[nv] >= 0) continue;",
-			"\t\tdists[nv] = dists[v] + 1;",
-			"\t\tque.push(nv);",
-			"\t}",
-			"}",
-		],
-		"description": ""
-	},
-	"shortcut.structure.monoid": {
-		"scope": "cpp",
-		"prefix": "short.struct.monoid",
-		"body": [
-			"template<class T>",
-			"struct monoid : lib::algebraic::base<T> /*, internal::group, internal::commutative*/ {",
-			"\tusing base = lib::algebraic::base<T>;",
-			"\tusing base::base;",
-			"\t// monoid() : base() {}",
-			"\t// monoid(const T& v) : base(v) {}",
-			"\tfriend inline monoid operator+(const monoid& lhs, const monoid& rhs) noexcept(NO_EXCEPT) { return lhs.val() + rhs.val(); }",
-			"\t// inline bitxor operator-() const noexcept(NO_EXCEPT) { return -this->val(); }",
-			"};"
-		]
-	},
-	"shortcut.algorithm.Floyd-Warshall": {
-		"scope": "cpp",
-		"prefix": "short.algo.floyd-warshall",
-		"body": [
-			"REP(k, ${1:n}) REP(i, $1) REP(j, $1) {",
-			"\tchmin(${2:G}[i][j], $2[i][k] + $2[k][j]);",
-			"}"
-		]
-	},
-	"shortcut.algorithm.tsp": {
-		"scope": "cpp",
-		"prefix": [
-			"short.algo.tsp",
-			"short.algo.bit-dp"
-		],
-		"body": [
-			"lib::valgrid<int> dp(1 << ${1:n}, $1, INF32);",
-			"REP(x, 1 << $1) {",
-			"\tREP(i, $1) REP(j, $1) {",
-			"\t\tchmin(dp[x | (1 << i)][i], dp[x][j] + ${2:dists}[j][i]);",
-			"\t}",
-			"}"
-		],
-		"description": ""
-	},
-	"structure.Matrix.noraml": {
-		"scope": "cpp",
-		"prefix": "struct.matrix.normal",
-		"body": [
-			"template <class T = int> struct Matrix : vector<vector<T>> {",
-			"\tMatrix(size_t h, size_t w, T init = T()) : vector<vector<T>> (h, vector<T> (w, init)) {}",
-			"\tinline T& operator()(size_t i, size_t j) { return (*this)[i][j]; }",
-			"};"
-		]
-	},
-	"structure.Matrix.extra.Transpose": {
-		"scope": "cpp",
-		"prefix": "struct.matrix.ex.transpose",
-		"body": [
-			"template<class T> Matrix<T>* Matrix<T>::transpose() {",
-			"\tMatrix<T> res(width, height);",
-			"\tfor(size_t i=0; i<height; ++i) for(size_t j=0; j<width; ++j) res[j][i] = (*this)(i,j);",
-			"\t*this = res;",
-			"\treturn this;",
-			"}"
-		],
-	},
-	"structure.Matrix.unfolded": {
-		"scope": "cpp",
-		"prefix": "struct.matrix.unfolded",
-		"body": [
-			"template <class T = int> struct UnfoldedMatrix : vector<T> {",
-			"\tUnfoldedMatrix(size_t h = 0, size_t w = 0, T init = T()) : vector<T> (h*w, init), height(h), width(w), buffer_size(h*w) {};",
-			"\tinline T& operator()(size_t i, size_t j) { return (*this)[i*width+j]; }",
-			"  private:",
-			"\tsize_t height, width, buffer_size;",
-			"};"
-		]
-	},
-	"shortcut.MultiTestcases": {
-		"prefix": "multi_testcases",
-		"body": [
-			"def solver():",
-			"\t return",
-			"",
-			"T = int(input)",
-			"for _ in [0] * T:",
-			"\tprint(solve())"
-		],
-	},
-	"shortcut.MeguruBinarySearch": {
-		"prefix": "meguru_bin_search",
-		"body": [
-			"${1:int} ng = ${2:-1}, ok = ${3:n};",
-			"while (abs(ok-ng) > 1) {",
-			"\t$1 mid = (ok+ng) / 2;",
-			"\t(${4:is_satisfied(mid)} ? ok : ng) = mid;",
-			"}",
-		],
-	},
-	"shortcut.interval_scanner": {
-		"prefix": [
-			"interval_scanner",
-			"shakutori_method"
-		],
-		"body": [
-			"auto validate = [&](auto) { return true; };",
-			"auto init = [&]() { };",
-			"auto valid = [&]() { return; };",
-			"auto expand = [&](auto val) { };",
-			"auto contract = [&](auto val) { };",
-			"auto apply = [&](auto l, auto r) { chmax(ans, r - l); };",
-			"",
-			"InclusiveIntervalScanner<> scanner(validate, init, valid, expand, contract, apply);",
-			"scanner.scan_all(ALL());",
-			"",
-		],
-		"description": ""
-	},
-	"shortcut.reduce.vector": {
-		"scope": "cpp",
-		"prefix": "red.vec",
-		"body": [
-			"reduce(ALL(${1:vec}), ${2:0}, [](auto& a, auto& b) { return a + b}; })"
-		]
-	},
-	"shortcut.include.atcoder": {
-		"scope": "cpp",
-		"prefix": "ac-library",
-		"body": [
-			"#include <atcoder/${1:modint}>"
-		]
-	},
-	"shortcut.include.modint": {
-		"prefix": "short.inc.modint",
-		"body": [
-			"#include <atcoder/modint>",
-			"using mint = atcoder::modint${1|998244353,1000000007|};"
-		],
-	},
-	"shortcut.include.segtree": {
-		"scope": "cpp",
-		"prefix": "short.inc.segtree",
-		"body": [
-			"#include <atcoder/segtree>",
-			"",
-			"${1:int} ${4:op}(const $1 a, const $1 b) { return ${3|a + b,a ^ b,a * b,gcd(a\\, b),min(a\\, b),max(a\\, b)|}; }",
-			"$1 ${5:e}() { return ${2|0,1,INT32_MIN,INT32_MAX,INT64_MIN,INT64_MAX,UINT32_MIN,UINT32_MAX,UINT64_MIN,UINT64_MAX|}; }",
-			"",
-			"segtree<$1,$4,$5> ${6:sgt};",
-		]
-	},
-	"shortcut.ForEach": {
-		"scope": "cpp",
-		"prefix": "foreach",
-		"body": [
-			"for(const ${1:auto}& ${2:i}:${3:I})"
-		],
-		"description": "Iteration by element"
-	},
-	"shortcut.cout": {
-		"scope": "cpp",
-		"prefix": "cout",
-		"body": [
-			"cout << ${1:ans} << \"\\n\";"
-		],
-		"description": ""
-	},
-	"shortcut.output.YesNo": {
-		"scope": "cpp",
-		"prefix": "yesno",
-		"body": [
-			"${1:true} ? ${2|\"Yes\" : \"No\",\"YES\" : \"NO\",\"yes\" : \"no\"|}"
-		],
-		"description": ""
-	},
-	"shortcut.output.fill": {
-		"scope": "cpp",
-		"prefix": "fill",
-		"body": [
-			" setfill('${1:0}') << setw(${2:16}) <<"
-		],
-		"description": ""
-	},
-	"shortcut.output.alignment_of_decimal_places": {
-		"scope": "cpp",
-		"prefix": "shortcut.fixed_prec",
-		"body": [
-			" fixed << setprecision(${16}) <<"
-		],
-		"description": ""
-	},
-	"shortcut.output.printf": {
-		"scope": "cpp",
-		"prefix": "printf;",
-		"body": [
-			"printf(\"${1:%lli}${2:\\n}\", $3);"
-		],
-		"description": ""
-	},
-	"shortcut.extensions::string": {
-		"scope": "cpp",
-		"prefix": "ex::string",
-		"body": [
-			"extensions::string"
-		]
-	},
-	"shortcut.in_range.open": {
-		"scope": "cpp",
-		"prefix": "open_range",
-		"body": [
-			"${1:a} < ${2:x} && $2 < ${3:b}"
-		]
-	},
-	"shortcut.in_range.closed": {
-		"scope": "cpp",
-		"prefix": "closed_range",
-		"body": [
-			"${1:a} <= ${2:x} && $2 <= ${3:b}"
-		]
-	},
-	"shortcut.declaration.PriorityQueue": {
-		"scope": "cpp",
-		"prefix": "dec.prique",
-		"body": [
-			"std::priority_queue<${1:int},${2|std::vector,std::deque|}<$1>,${3|std::less,std::greater|}<$1>>"
-		]
-	},
-	"shortcut.declaration.vector": {
-		"scope": "cpp",
-		"prefix": "dec.vec",
-		"body": [
-			"vector<${1:i64}> ${2:a}(${3:n});"
-		]
-	},
-	"shortcut.declaration.valarray": {
-		"scope": "cpp",
-		"prefix": "dec.va",
-		"body": [
-			"valarray<${1:i64}> ${2:a}(${3:n});"
-		]
-	},
-	"shortcut.input.vector": {
-		"scope": "cpp",
-		"prefix": "input.rep_vec",
-		"body": [
-			"REP(${1:i}, ${2:n}) cin >> ${3:a}[$1];"
-		]
-	},
-	"define.constant.MOD": {
-		"scope": "cpp",
-		"prefix": "def.const.MOD",
-		"body": [
-			"#define MOD 1000000007"
-		],
-		"description": "Definition of MOD number"
-	},
-	"divisors": {
-		"scope": "python",
-		"prefix": "divisors",
-		"body": [
-			"def divisors(n):",
-			"\td0, d1 = [], []",
-			"\ti = 1",
-			"\twhile i*i <= n:",
-			"\t\tif n % i == 0:",
-			"\t\t\td0.append(i)",
-			"\t\t\tif i != n // i:",
-			"\t\t\t\td1.append(n//i)",
-			"\t\ti += 1",
-			"\treturn d0 + d1[::-1]"
-		]
-	},
-	"map": {
-		"scope": "python",
-		"prefix": "mapped",
-		"body": [
-			"map(${1:int}, input().split())"
-		]
-	},
-	"input.split": {
-		"scope": "python",
-		"prefix": "splitted",
-		"body": [
-			"input().split()"
-		]
-	},
-	"input": {
-		"scope": "python",
-		"prefix": "input",
-		"body": [
-			"${1:int}(input())"
-		]
-	},
-	"YesNo": {
-		"scope": "python",
-		"prefix": "yesno",
-		"body": [
-			"\"${2:Yes}\" if ${1:True} else \"${3:No}\""
-		]
-	},
-	"enumerate": {
-		"scope": "python",
-		"prefix": "enumerate",
-		"body": [
-			"enumerate(${1:a})"
-		]
-	}
+    "shortcut.algorithm.BFS/DFS": {
+        "scope": "cpp",
+        "prefix": "short.algo.bfs/dfs",
+        "body": [
+            "${1|queue,stack|}<${3:int}> que;",
+            "vector<${4:int}> dists(n, -1);\n",
+            "que.push(${5:0}), dists[$5] = 0;\n",
+            "while(!que.empty()) {",
+            "\tauto v = que.${2|front,top|}(); que.pop();",
+            "\tfor(auto& nv : G[v]) {",
+            "\t\tif(dists[nv] >= 0) continue;",
+            "\t\tdists[nv] = dists[v] + 1;",
+            "\t\tque.push(nv);",
+            "\t}",
+            "}",
+        ],
+        "description": ""
+    },
+    "shortcut.structure.monoid": {
+        "scope": "cpp",
+        "prefix": "short.struct.monoid",
+        "body": [
+            "template<class T>",
+            "struct monoid : lib::algebraic::base<T>, lib::algebraic::associative/*, lib::algebraic::invertible, lib::algebraic::commutative*/ {",
+            "\tusing base = lib::algebraic::base<T>;",
+            "\tusing base::base;",
+            "\t// monoid() : base() {}",
+            "\t// monoid(const T& v) : base(v) {}",
+            "\tfriend inline monoid operator+(const monoid& lhs, const monoid& rhs) noexcept(NO_EXCEPT) { return lhs.val() + rhs.val(); }",
+            "\t// inline bitxor operator-() const noexcept(NO_EXCEPT) { return -this->val(); }",
+            "};"
+        ]
+    },
+    "shortcut.structure.action": {
+        "scope": "cpp",
+        "prefix": "short.struct.action",
+        "body": [
+            "template<class T>",
+            "struct operand_monoid : lib::algebraic::base<T> /*, internal::group, internal::commutative*/ {",
+            "\tusing base = lib::algebraic::base<T>;",
+            "\tusing base::base;",
+            "\t// operand_monoid() : base(0) {}",
+            "\t// operand_monoid(const T& v) : base(v) {}",
+            "\tfriend inline operand_monoid operator+(const operand_monoid& lhs, const operand_monoid& rhs) noexcept(NO_EXCEPT) {}",
+            "\t// inline bitxor operator-() const noexcept(NO_EXCEPT) { return -this->val(); }",
+            "};",
+            "",
+            "template<class T>",
+            "struct operator_monoid : lib::algebraic::base<T> /*, internal::group, internal::commutative*/ {",
+            "\tusing base = lib::algebraic::base<T>;",
+            "\tusing base::base;",
+            "\t// operand_monoid() : base(0) {}",
+            "\t// operand_monoid(const T& v) : base(v) {}",
+            "\tfriend inline operator_monoid operator+(const operator_monoid& lhs, const operator_monoid& rhs) noexcept(NO_EXCEPT) {}",
+            "\t// inline bitxor operator-() const noexcept(NO_EXCEPT) { return -this->val(); }",
+            "};",
+            "",
+            "template<class T> struct action : lib::actions::base<operator_monoid<T>> {",
+            "\tstatic constexpr lib::actions::flags tags{};",
+            "",
+            "\tusing operand = operand_monoid<T>;",
+            "\tusing operation = operator_monoid<T>;",
+            "",
+            "\tstatic operand map(const operand& x, const operation& y) noexcept(NO_EXCEPT) {}",
+            "\t// static operation fold(const operation& x, const lib::internal::size_t) noexcept(NO_EXCEPT) { return x; }",
+            "};"
+        ]
+    },
+    "shortcut.algorithm.Floyd-Warshall": {
+        "scope": "cpp",
+        "prefix": "short.algo.floyd-warshall",
+        "body": [
+            "REP(k, ${1:n}) REP(i, $1) REP(j, $1) {",
+            "\tchmin(${2:G}[i][j], $2[i][k] + $2[k][j]);",
+            "}"
+        ]
+    },
+    "shortcut.algorithm.tsp": {
+        "scope": "cpp",
+        "prefix": [
+            "short.algo.tsp",
+            "short.algo.bit-dp"
+        ],
+        "body": [
+            "lib::valgrid<int> dp(1 << ${1:n}, $1, INF32);",
+            "REP(x, 1 << $1) {",
+            "\tREP(i, $1) REP(j, $1) {",
+            "\t\tchmin(dp[x | (1 << i)][i], dp[x][j] + ${2:dists}[j][i]);",
+            "\t}",
+            "}"
+        ],
+        "description": ""
+    },
+    "structure.Matrix.noraml": {
+        "scope": "cpp",
+        "prefix": "struct.matrix.normal",
+        "body": [
+            "template <class T = int> struct Matrix : vector<vector<T>> {",
+            "\tMatrix(size_t h, size_t w, T init = T()) : vector<vector<T>> (h, vector<T> (w, init)) {}",
+            "\tinline T& operator()(size_t i, size_t j) { return (*this)[i][j]; }",
+            "};"
+        ]
+    },
+    "structure.Matrix.extra.Transpose": {
+        "scope": "cpp",
+        "prefix": "struct.matrix.ex.transpose",
+        "body": [
+            "template<class T> Matrix<T>* Matrix<T>::transpose() {",
+            "\tMatrix<T> res(width, height);",
+            "\tfor(size_t i=0; i<height; ++i) for(size_t j=0; j<width; ++j) res[j][i] = (*this)(i,j);",
+            "\t*this = res;",
+            "\treturn this;",
+            "}"
+        ],
+    },
+    "structure.Matrix.unfolded": {
+        "scope": "cpp",
+        "prefix": "struct.matrix.unfolded",
+        "body": [
+            "template <class T = int> struct UnfoldedMatrix : vector<T> {",
+            "\tUnfoldedMatrix(size_t h = 0, size_t w = 0, T init = T()) : vector<T> (h*w, init), height(h), width(w), buffer_size(h*w) {};",
+            "\tinline T& operator()(size_t i, size_t j) { return (*this)[i*width+j]; }",
+            "  private:",
+            "\tsize_t height, width, buffer_size;",
+            "};"
+        ]
+    },
+    "shortcut.MultiTestcases": {
+        "prefix": "multi_testcases",
+        "body": [
+            "def solver():",
+            "\t return",
+            "",
+            "T = int(input)",
+            "for _ in [0] * T:",
+            "\tprint(solve())"
+        ],
+    },
+    "shortcut.MeguruBinarySearch": {
+        "prefix": "meguru_bin_search",
+        "body": [
+            "${1:int} ng = ${2:-1}, ok = ${3:n};",
+            "while (abs(ok-ng) > 1) {",
+            "\t$1 mid = (ok+ng) / 2;",
+            "\t(${4:is_satisfied(mid)} ? ok : ng) = mid;",
+            "}",
+        ],
+    },
+    "shortcut.interval_scanner": {
+        "prefix": [
+            "interval_scanner",
+            "shakutori_method"
+        ],
+        "body": [
+            "auto validate = [&](auto) { return true; };",
+            "auto init = [&]() { };",
+            "auto valid = [&]() { return; };",
+            "auto expand = [&](auto val) { };",
+            "auto contract = [&](auto val) { };",
+            "auto apply = [&](auto l, auto r) { chmax(ans, r - l); };",
+            "",
+            "InclusiveIntervalScanner<> scanner(validate, init, valid, expand, contract, apply);",
+            "scanner.scan_all(ALL());",
+            "",
+        ],
+        "description": ""
+    },
+    "shortcut.reduce.vector": {
+        "scope": "cpp",
+        "prefix": "red.vec",
+        "body": [
+            "reduce(ALL(${1:vec}), ${2:0}, [](auto& a, auto& b) { return a + b}; })"
+        ]
+    },
+    "shortcut.include.atcoder": {
+        "scope": "cpp",
+        "prefix": "ac-library",
+        "body": [
+            "#include <atcoder/${1:modint}>"
+        ]
+    },
+    "shortcut.include.modint": {
+        "prefix": "short.inc.modint",
+        "body": [
+            "#include <atcoder/modint>",
+            "using mint = atcoder::modint${1|998244353,1000000007|};"
+        ],
+    },
+    "shortcut.include.segtree": {
+        "scope": "cpp",
+        "prefix": "short.inc.segtree",
+        "body": [
+            "#include <atcoder/segtree>",
+            "",
+            "${1:int} ${4:op}(const $1 a, const $1 b) { return ${3|a + b,a ^ b,a * b,gcd(a\\, b),min(a\\, b),max(a\\, b)|}; }",
+            "$1 ${5:e}() { return ${2|0,1,INT32_MIN,INT32_MAX,INT64_MIN,INT64_MAX,UINT32_MIN,UINT32_MAX,UINT64_MIN,UINT64_MAX|}; }",
+            "",
+            "segtree<$1,$4,$5> ${6:sgt};",
+        ]
+    },
+    "shortcut.ForEach": {
+        "scope": "cpp",
+        "prefix": "foreach",
+        "body": [
+            "for(const ${1:auto}& ${2:i}:${3:I})"
+        ],
+        "description": "Iteration by element"
+    },
+    "shortcut.cout": {
+        "scope": "cpp",
+        "prefix": "cout",
+        "body": [
+            "cout << ${1:ans} << \"\\n\";"
+        ],
+        "description": ""
+    },
+    "shortcut.output.YesNo": {
+        "scope": "cpp",
+        "prefix": "yesno",
+        "body": [
+            "${1:true} ? ${2|\"Yes\" : \"No\",\"YES\" : \"NO\",\"yes\" : \"no\"|}"
+        ],
+        "description": ""
+    },
+    "shortcut.output.fill": {
+        "scope": "cpp",
+        "prefix": "fill",
+        "body": [
+            " setfill('${1:0}') << setw(${2:16}) <<"
+        ],
+        "description": ""
+    },
+    "shortcut.output.alignment_of_decimal_places": {
+        "scope": "cpp",
+        "prefix": "shortcut.fixed_prec",
+        "body": [
+            " fixed << setprecision(${16}) <<"
+        ],
+        "description": ""
+    },
+    "shortcut.output.printf": {
+        "scope": "cpp",
+        "prefix": "printf;",
+        "body": [
+            "printf(\"${1:%lli}${2:\\n}\", $3);"
+        ],
+        "description": ""
+    },
+    "shortcut.extensions::string": {
+        "scope": "cpp",
+        "prefix": "ex::string",
+        "body": [
+            "extensions::string"
+        ]
+    },
+    "shortcut.in_range.open": {
+        "scope": "cpp",
+        "prefix": "open_range",
+        "body": [
+            "${1:a} < ${2:x} && $2 < ${3:b}"
+        ]
+    },
+    "shortcut.in_range.closed": {
+        "scope": "cpp",
+        "prefix": "closed_range",
+        "body": [
+            "${1:a} <= ${2:x} && $2 <= ${3:b}"
+        ]
+    },
+    "shortcut.declaration.PriorityQueue": {
+        "scope": "cpp",
+        "prefix": "dec.prique",
+        "body": [
+            "std::priority_queue<${1:int},${2|std::vector,std::deque|}<$1>,${3|std::less,std::greater|}<$1>>"
+        ]
+    },
+    "shortcut.declaration.vector": {
+        "scope": "cpp",
+        "prefix": "dec.vec",
+        "body": [
+            "vector<${1:i64}> ${2:a}(${3:n});"
+        ]
+    },
+    "shortcut.declaration.valarray": {
+        "scope": "cpp",
+        "prefix": "dec.va",
+        "body": [
+            "valarray<${1:i64}> ${2:a}(${3:n});"
+        ]
+    },
+    "shortcut.input.vector": {
+        "scope": "cpp",
+        "prefix": "input.rep_vec",
+        "body": [
+            "REP(${1:i}, ${2:n}) cin >> ${3:a}[$1];"
+        ]
+    },
+    "define.constant.MOD": {
+        "scope": "cpp",
+        "prefix": "def.const.MOD",
+        "body": [
+            "#define MOD 1000000007"
+        ],
+        "description": "Definition of MOD number"
+    },
+    "divisors": {
+        "scope": "python",
+        "prefix": "divisors",
+        "body": [
+            "def divisors(n):",
+            "\td0, d1 = [], []",
+            "\ti = 1",
+            "\twhile i*i <= n:",
+            "\t\tif n % i == 0:",
+            "\t\t\td0.append(i)",
+            "\t\t\tif i != n // i:",
+            "\t\t\t\td1.append(n//i)",
+            "\t\ti += 1",
+            "\treturn d0 + d1[::-1]"
+        ]
+    },
+    "map": {
+        "scope": "python",
+        "prefix": "mapped",
+        "body": [
+            "map(${1:int}, input().split())"
+        ]
+    },
+    "input.split": {
+        "scope": "python",
+        "prefix": "splitted",
+        "body": [
+            "input().split()"
+        ]
+    },
+    "input": {
+        "scope": "python",
+        "prefix": "input",
+        "body": [
+            "${1:int}(input())"
+        ]
+    },
+    "YesNo": {
+        "scope": "python",
+        "prefix": "yesno",
+        "body": [
+            "\"${2:Yes}\" if ${1:True} else \"${3:No}\""
+        ]
+    },
+    "enumerate": {
+        "scope": "python",
+        "prefix": "enumerate",
+        "body": [
+            "enumerate(${1:a})"
+        ]
+    }
 }
