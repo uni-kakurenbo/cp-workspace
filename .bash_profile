@@ -16,3 +16,6 @@ function git {
         /usr/bin/git "$@"
     fi
 }
+
+# shellcheck source=/dev/null
+. "$HOME/CompetitiveProgramming/secrets.sh"

@@ -14,6 +14,7 @@ function chrome(){
 
 export USE_CCACHE=1
 export CCACHE_DIR=/root/.ccache
+export PATH=$PATH:/home/uni_kakurenbo/.local/bin
 
 alias colors="~/.local/lib/256-colors.sh"
 
@@ -37,6 +38,7 @@ alias clp="~/CompetitiveProgramming/commands/clip.sh"
 
 alias pre-compile="~/CompetitiveProgramming/commands/pre-compile.sh"
 
+# shellcheck source=/dev/null
 . "$HOME/.cargo/env"
 
 export NVM_DIR="$HOME/.nvm"
