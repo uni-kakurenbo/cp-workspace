@@ -36,6 +36,8 @@ alias ts="~/CompetitiveProgramming/commands/test.sh"
 alias sub="~/CompetitiveProgramming/commands/submit.sh"
 alias clp="~/CompetitiveProgramming/commands/clip.sh"
 
+alias docs="~/CompetitiveProgramming/commands/docs.sh"
+
 alias pre-compile="~/CompetitiveProgramming/commands/pre-compile.sh"
 
 # shellcheck source=/dev/null
