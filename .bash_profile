@@ -16,8 +16,3 @@ function git {
         /usr/bin/git "$@"
     fi
 }
-
-# shellcheck source=/dev/null
-. "$HOME/CompetitiveProgramming/secrets.sh"
-
-export CPLUS_INCLUDE_PATH="$HOME/CompetitiveProgramming/sources/libraries/ac-library"

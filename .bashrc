@@ -12,9 +12,13 @@ function chrome(){
     "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" "$(wslpath -w "$(realpath "$1")")"
 }
 
+# shellcheck source=/dev/null
+. "$HOME/CompetitiveProgramming/secrets.sh"
+
 export USE_CCACHE=1
 export CCACHE_DIR=/root/.ccache
 export PATH=$PATH:/home/uni_kakurenbo/.local/bin
+export CPLUS_INCLUDE_PATH="$HOME/CompetitiveProgramming/sources/libraries/ac-library"
 
 alias colors="~/.local/lib/256-colors.sh"
 
