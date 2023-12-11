@@ -1,0 +1,54 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build_cpp__development",
+            "type": "shell",
+            "command": "${workspaceFolder}/commands/ccore.sh",
+            "args": [
+                "build_cpp",
+                "'${workspaceFolder}/sources/libraries'",
+                "'${file}'",
+                "'${fileDirname}/${fileBasenameNoExtension}.exe'",
+                "-DLOCAL_JUDGE",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "build_cpp__development_with_sanitizer",
+            "type": "shell",
+            "command": "${workspaceFolder}/commands/ccore.sh",
+            "args": [
+                "build_cpp",
+                "'${workspaceFolder}/sources/libraries'",
+                "'${file}'",
+                "'${fileDirname}/${fileBasenameNoExtension}.exe'",
+                "-DLOCAL_JUDGE",
+                "-fsanitize=undefined,leak,address"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "build_cpp__non_development",
+            "type": "shell",
+            "command": "${workspaceFolder}/commands/ccore.sh",
+            "args": [
+                "build_cpp",
+                "'${workspaceFolder}/sources/libraries'",
+                "'${file}'",
+                "'${fileDirname}/${fileBasenameNoExtension}.exe'",
+                "-O2",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        }
+    ]
+}
