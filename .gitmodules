@@ -25,6 +25,3 @@
 [submodule "original/private-tasks"]
 	path = original/private-tasks
 	url = https://github.com/uni-kakurenbo/original-problems.git
-[submodule "others/parallel-verify-sample"]
-	path = others/parallel-verify-sample
-	url = https://github.com/uni-kakurenbo/parallel-verify-sample.git
