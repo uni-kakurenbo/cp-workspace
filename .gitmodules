@@ -31,3 +31,6 @@
 [submodule "others/parallel-verify-sample"]
 	path = others/parallel-verify-sample
 	url = https://github.com/uni-kakurenbo/parallel-verify-sample.git
+[submodule "others/ALGORI"]
+	path = others/ALGORI
+	url = https://github.com/uni-kakurenbo/uno-solver.git
