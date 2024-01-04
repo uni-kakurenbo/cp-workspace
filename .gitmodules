@@ -13,9 +13,6 @@
 [submodule "sources/libraries/original"]
 	path = sources/libraries/original
 	url = https://github.com/uni-kakurenbo/library-for-competitive-programming.git
-[submodule "original/contests/TGC"]
-	path = original/contests/TGC
-	url = https://github.com/uni-kakurenbo/TGC.git
 [submodule "sources/others/themed_research"]
 	path = sources/others/themed_research
 	url = https://github.com/uni-kakurenbo/themed-research.git
@@ -34,3 +31,6 @@
 [submodule "others/ALGORI"]
 	path = others/ALGORI
 	url = https://github.com/uno-solver/uno-solver.git
+[submodule "original/contests/TGC"]
+	path = original/contests/TGC
+	url = https://github.com/TGC-Admin/TGC.git
