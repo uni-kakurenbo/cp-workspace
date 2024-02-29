@@ -8,7 +8,7 @@ if [ "$TERM" != "linux" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
-function chrome(){
+function chrome() {
     "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" "$(wslpath -w "$(realpath "$1")")"
 }
 
@@ -48,5 +48,5 @@ alias pre-compile="~/CompetitiveProgramming/commands/pre-compile.sh"
 . "$HOME/.cargo/env"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion

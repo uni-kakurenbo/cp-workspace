@@ -1,0 +1,9 @@
+-std=gnu++20
+-Wall
+-Wextra
+-Wno-char-subscripts
+-fsplit-stack
+-Wno-unknown-attributes
+-I/home/uni_kakurenbo/CompetitiveProgramming/boost/
+-I/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries/ac-library/
+-I/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries/original/
