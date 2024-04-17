@@ -6,4 +6,4 @@
 -Wno-unknown-attributes
 -I/home/uni_kakurenbo/CompetitiveProgramming/boost/
 -I/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries/ac-library/
--I/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries/original/
+-I/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries/uni/

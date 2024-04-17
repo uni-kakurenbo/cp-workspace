@@ -10,9 +10,6 @@
 [submodule "sources/templates"]
 	path = sources/templates
 	url = https://github.com/uni-kakurenbo/templates-for-competitive-programming
-[submodule "sources/libraries/original"]
-	path = sources/libraries/original
-	url = https://github.com/uni-kakurenbo/library-for-competitive-programming.git
 [submodule "sources/others/themed_research"]
 	path = sources/others/themed_research
 	url = https://github.com/uni-kakurenbo/themed-research.git
@@ -34,3 +31,6 @@
 [submodule "original/contests/TGC"]
 	path = original/contests/TGC
 	url = https://github.com/TGC-Admin/TGC.git
+[submodule "sources/libraries/uni"]
+	path = sources/libraries/uni
+	url = https://github.com/uni-kakurenbo/library-for-competitive-programming
