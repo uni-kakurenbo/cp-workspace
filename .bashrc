@@ -44,6 +44,9 @@ alias docs="~/CompetitiveProgramming/commands/docs.sh"
 
 alias pre-compile="~/CompetitiveProgramming/commands/pre-compile.sh"
 
+alias open="powershell.exe /c start"
+alias git-remote="git remote get-url origin | open"
+
 # shellcheck source=/dev/null
 . "$HOME/.cargo/env"
 
