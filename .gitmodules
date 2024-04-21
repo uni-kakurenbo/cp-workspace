@@ -3,13 +3,13 @@
 	url = https://github.com/atcoder/ac-library
 [submodule "commands"]
 	path = commands
-	url = https://github.com/uni-kakurenbo/command-line-applications-for-atcoder.git
+	url = https://github.com/uni-kakurenbo/cp-commands.git
 [submodule "sources/solutions"]
 	path = sources/solutions
-	url = https://github.com/uni-kakurenbo/solutions-of-competitive-programming.git
+	url = https://github.com/uni-kakurenbo/cp-solutions.git
 [submodule "sources/templates"]
 	path = sources/templates
-	url = https://github.com/uni-kakurenbo/templates-for-competitive-programming
+	url = https://github.com/uni-kakurenbo/cp-templates
 [submodule "sources/others/themed_research"]
 	path = sources/others/themed_research
 	url = https://github.com/uni-kakurenbo/themed-research.git
@@ -18,7 +18,7 @@
 	url = https://github.com/kusira/GBC.git
 [submodule "original/private-tasks"]
 	path = original/private-tasks
-	url = https://github.com/uni-kakurenbo/original-problems.git
+	url = https://github.com/uni-kakurenbo/cp-tasks.git
 [submodule "others/_parallel-verify-sample"]
 	path = others/_parallel-verify-sample
 	url = https://github.com/uni-kakurenbo/_parallel-verify-sample.git
@@ -33,4 +33,4 @@
 	url = https://github.com/TGC-Admin/TGC.git
 [submodule "sources/libraries/uni"]
 	path = sources/libraries/uni
-	url = https://github.com/uni-kakurenbo/library-for-competitive-programming
+	url = https://github.com/uni-kakurenbo/cp-library
