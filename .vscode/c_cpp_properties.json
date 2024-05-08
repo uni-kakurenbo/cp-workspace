@@ -3,7 +3,7 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
+                "/home/uni_kakurenbo/CompetitiveProgramming/sources/libraries/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++-13",
