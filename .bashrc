@@ -47,6 +47,8 @@ alias pre-compile="~/CompetitiveProgramming/commands/pre-compile.sh"
 alias open="powershell.exe /c start"
 alias git-remote="git remote get-url origin | open"
 
+alias drop-cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a\""
+
 # shellcheck source=/dev/null
 . "$HOME/.cargo/env"
 
