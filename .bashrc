@@ -1,5 +1,8 @@
 #! /bin/bash
 
+# shellcheck source=/dev/null
+source "$HOME/python-env/bin/activate"
+
 function _update_ps1() {
     PS1="$(~/.local/bin/powerline-shell $?)"
 }
