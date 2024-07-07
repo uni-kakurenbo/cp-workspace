@@ -20,8 +20,10 @@ function chrome() {
 
 export USE_CCACHE=1
 export CCACHE_DIR=/root/.ccache
-export PATH=$PATH:/home/uni_kakurenbo/.local/bin
 export CPLUS_INCLUDE_PATH="$HOME/CompetitiveProgramming/sources/libraries/ac-library"
+
+export PATH="/home/linuxbrew/.linuxbrew/opt/node@20/bin:$PATH"
+export PATH="/home/uni_kakurenbo/.local/bin:$PATH"
 
 alias colors="~/.local/lib/256-colors.sh"
 
