@@ -10,7 +10,7 @@
                 "'${workspaceFolder}/sources/libraries'",
                 "'${file}'",
                 "'${fileDirname}/${fileBasenameNoExtension}.exe'",
-                "-DLOCAL_JUDGE",
+                "-DLOCAL_JUDGE"
             ],
             "group": {
                 "kind": "build",
@@ -43,11 +43,27 @@
                 "'${workspaceFolder}/sources/libraries'",
                 "'${file}'",
                 "'${fileDirname}/${fileBasenameNoExtension}.exe'",
-                "-O2",
+                "-O2"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": false
+            }
+        },
+        {
+            "label": "build_cpp__testlib",
+            "type": "shell",
+            "command": "${workspaceFolder}/commands/ccore.sh",
+            "args": [
+                "build_cpp",
+                "'${workspaceFolder}/sources/libraries'",
+                "'${file}'",
+                "'${fileDirname}/${fileBasenameNoExtension}.exe'",
+                "-DLOCAL_JUDGE",
+                "'-I${workspaceFolder}/sources/libraries/testlib'"
+            ],
+            "group": {
+                "kind": "build"
             }
         }
     ]

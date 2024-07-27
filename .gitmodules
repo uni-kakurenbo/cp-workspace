@@ -34,3 +34,6 @@
 [submodule "sources/libraries/uni"]
 	path = sources/libraries/uni
 	url = https://github.com/uni-kakurenbo/cp-library
+[submodule "sources/libraries/testlib"]
+	path = sources/libraries/testlib
+	url = https://github.com/MikeMirzayanov/testlib.git
