@@ -3,13 +3,9 @@
 # shellcheck source=/dev/null
 source "$HOME/python-env/bin/activate"
 
-function _update_ps1() {
-    PS1="$(~/.local/bin/powerline-shell $?)"
-}
-
-if [ "$TERM" != "linux" ]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+eval "$(
+    oh-my-posh init --config ~/CompetitiveProgramming/terminal.omp.json bash
+)"
 
 function chrome() {
     "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" "$(wslpath -w "$(realpath "$1")")"
@@ -22,7 +18,6 @@ export USE_CCACHE=1
 export CCACHE_DIR=/root/.ccache
 export CPLUS_INCLUDE_PATH="$HOME/CompetitiveProgramming/sources/libraries/ac-library"
 
-export PATH="/home/linuxbrew/.linuxbrew/opt/node@20/bin:$PATH"
 export PATH="/home/uni_kakurenbo/.local/bin:$PATH"
 
 alias colors="~/.local/lib/256-colors.sh"
@@ -50,7 +45,13 @@ alias docs="~/CompetitiveProgramming/commands/docs.sh"
 alias pre-compile="~/CompetitiveProgramming/commands/pre-compile.sh"
 
 alias open="powershell.exe /c start"
-alias git-remote="git remote get-url origin | open"
+
+alias remote="git remote get-url origin | open"
+alias rebase="git rebase -i --autosquash"
+alias fixup="git commit --fixup"
+alias main="git switch main"
+alias push="git status"
+alias push="git push"
 
 alias drop-cache="sudo bash -c 'echo 3 >/proc/sys/vm/drop_caches && swapoff -a && swapon -a'"
 

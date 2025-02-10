@@ -37,3 +37,6 @@
 [submodule "sources/libraries/testlib"]
 	path = sources/libraries/testlib
 	url = https://github.com/MikeMirzayanov/testlib.git
+[submodule "others/AtCoder-language-update_2024-11/Cpp23-GCC13"]
+	path = others/AtCoder-language-update_2024-11/Cpp23-GCC13
+	url = https://github.com/uni-kakurenbo/AtCoder-Language-Update_2024-11_C-23-GCC14.git
