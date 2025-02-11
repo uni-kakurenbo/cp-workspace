@@ -40,6 +40,8 @@
 [submodule "others/_parallel-verify-sample"]
 	path = others/_parallel-verify-sample
 	url = https://github.com/uni-kakurenbo/_parallel-verify-sample.git
+    ignore = dirty
 [submodule "sources/libraries/benchmark"]
 	path = sources/libraries/benchmark
 	url = https://github.com/google/benchmark.git
+    ignore = dirty
