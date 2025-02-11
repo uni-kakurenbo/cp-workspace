@@ -19,9 +19,6 @@
 [submodule "original/private-tasks"]
 	path = original/private-tasks
 	url = https://github.com/uni-kakurenbo/cp-tasks.git
-[submodule "others/_parallel-verify-sample"]
-	path = others/_parallel-verify-sample
-	url = https://github.com/uni-kakurenbo/_parallel-verify-sample.git
 [submodule "others/parallel-verify-sample"]
 	path = others/parallel-verify-sample
 	url = https://github.com/uni-kakurenbo/parallel-verify-sample.git
@@ -40,3 +37,9 @@
 [submodule "others/AtCoder-language-update_2024-11/CXX23-GCC13"]
 	path = others/AtCoder-language-update_2024-11/CXX23-GCC13
 	url = https://github.com/uni-kakurenbo/AtCoder-Language-Update_2024-11_CXX23-GCC14-2-0_proposal.git
+[submodule "others/_parallel-verify-sample"]
+	path = others/_parallel-verify-sample
+	url = https://github.com/uni-kakurenbo/_parallel-verify-sample.git
+[submodule "sources/libraries/benchmark"]
+	path = sources/libraries/benchmark
+	url = https://github.com/google/benchmark.git

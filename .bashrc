@@ -55,6 +55,12 @@ alias push="git push"
 
 alias drop-cache="sudo bash -c 'echo 3 >/proc/sys/vm/drop_caches && swapoff -a && swapon -a'"
 
+function remove-submodule() {
+    git submodule deinit -f "$1"
+    git rm -f "$1"
+    rm -rf ".git/modules/$1"
+}
+
 # shellcheck source=/dev/null
 . "$HOME/.cargo/env"
 
