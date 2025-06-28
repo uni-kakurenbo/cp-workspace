@@ -45,3 +45,6 @@
 	path = sources/libraries/benchmark
 	url = https://github.com/google/benchmark.git
     ignore = dirty
+[submodule "sources/libraries/luzhiled"]
+	path = sources/libraries/luzhiled
+	url = https://github.com/ei1333/library.git
