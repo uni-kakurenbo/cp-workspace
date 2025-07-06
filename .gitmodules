@@ -48,3 +48,6 @@
 [submodule "sources/libraries/luzhiled"]
 	path = sources/libraries/luzhiled
 	url = https://github.com/ei1333/library.git
+[submodule "sources/libraries/dummy"]
+	path = sources/libraries/dummy
+	url = https://github.com/uni-kakurenbo/libstdcxx-mock.git
