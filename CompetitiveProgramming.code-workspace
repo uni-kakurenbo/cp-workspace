@@ -1,0 +1,33 @@
+{
+    "folders": [
+        {
+            "name": "Realtime",
+            "path": "sources/solutions/realtime"
+        },
+        {
+            "name": "Practice",
+            "path": "sources/solutions/practice"
+        },
+        {
+            "name": "Virtual",
+            "path": "sources/solutions/virtual"
+        },
+        {
+            "name": "Library",
+            "path": "sources/libraries/uni"
+        },
+        {
+            "name": "Include",
+            "path": "sources/libraries"
+        },
+        {
+            "name": "Commands",
+            "path": "commands"
+        },
+        {
+            "name": "CompetitiveProgramming",
+            "path": "."
+        }
+    ],
+    "settings": {}
+}
